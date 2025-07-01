@@ -1,20 +1,15 @@
 import express from 'express';
-import serverless from 'serverless-http';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const _dirname = path.dirname(_filename);
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', 'template'); 
 
 // Use form data middleware
 app.use(express.urlencoded({ extended: true }));
 
-
+// ✅ Use environment port for Render OR default to 5000 (for local)
+const port = process.env.PORT || 5000;
 
 // Route for table generation
 app.get('/table', (req, res) => {
@@ -22,4 +17,7 @@ app.get('/table', (req, res) => {
     res.render('table', { num: number });
 });
 
-export default serverless(app);
+// ✅ Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
