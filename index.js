@@ -3,7 +3,7 @@ const app = express();
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
-app.set('views', 'template'); 
+app.set('views', 'views'); 
 
 // Use form data middleware
 app.use(express.urlencoded({ extended: true }));
