@@ -5,11 +5,17 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views'); 
 
+
 // Use form data middleware
 app.use(express.urlencoded({ extended: true }));
 
 // ✅ Use environment port for Render OR default to 5000 (for local)
 const port = process.env.PORT || 5000;
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the EJS Template App');
+});
+
 
 // Route for table generation
 app.get('/table', (req, res) => {
