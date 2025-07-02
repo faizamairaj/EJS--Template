@@ -20,7 +20,11 @@ app.get('/', (req, res) => {
     res.render('table', { num: number });
 });
 
-// // ✅ Start the server
+app.get('/table', (req, res) => {
+    // const number = parseInt(req.query.num);
+    res.render('table');
+});
+// ✅ Start the server
 // app.listen(port, () => {
 //     console.log(`Server is running on http://localhost:${port}`);
 // });
